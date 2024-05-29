@@ -1,0 +1,11 @@
+{
+  "name": "cybermart_pidis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "manage.py",
+  "scripts": {
+    "start": "python3 manage.py runserver"
+  },
+  "author": "",
+  "license": "ISC"
+}

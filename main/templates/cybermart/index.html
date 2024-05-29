@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybermart</title>
+    <link rel="stylesheet" href="{% static 'main/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/smartbasket.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="icon" href="{% static 'main/icons/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="menu">
+                    <div class="menu__left">
+                        <nav class="menu__inner">
+                            <ul class="menu-list__left">
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'about_company' %}">О компании</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'contacts' %}">Контакты</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'catalog' %}">Каталог</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="menu__right">
+                        <nav class="menu__inner">
+                            <ul class="menu-list__right">
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link number text-white">Звоните с 9:00 до
+                                        21:00</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link menu-list__link_last text-white" href="tel:89999999999">
+                                        +7 (999) 999-99-99
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="navbar">
+                    <div class="header-bottom__inner">
+                        <a class="logo" href="{% url 'index' %}" title="на главную">
+                            <img class="logo__img" src="{% static 'main/icons/logo.svg' %}" title="#" alt="логотип">
+                        </a>
+
+                        <a class="logo-2" href="{% url 'index' %}" title="на главную">
+                            <img class="logo-2__img" src="{% static 'main/icons/logo_2.svg' %}" title="#" alt="логотип 2">
+                        </a>
+
+                    </div>
+                    <div class="search">
+                        <input type="text" id="search__bar" placeholder="Поиск товаров">
+                        <button type="submit" id="search__button">
+                            <img src="{% static 'main/icons/search.svg' %}" alt="поиск">
+                        </button>
+                    </div>
+                    <ul class="basket">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    
+    <div class="fast_links">
+        <div class="container_fast_links">
+            <ul class="categories_list">
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=smartphones" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/phone.svg' %}" alt="телефоны" class="categories_list-item-img">
+                        <span class="categories_list-item-span">Телефоны</span>
+                    </a>
+                </li>
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=tablets" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/tablet.svg' %}" alt="планшеты" class="categories_list-item-img">
+                        <span class="categories_list-item-span">Планшеты</span>
+                    </a>
+                </li>
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=laptops" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/laptop.svg' %}" alt="ноутбуки" class="categories_list-item-img">
+                        <span class="categories_list-item-span">Ноутбуки</span>
+                    </a>
+                </li>
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=televisions" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/tv.svg' %}" alt="телевизоры" class="categories_list-item-img"
+                            class="categories_list-item-img">
+                        <span class="categories_list-item-span">Телевизоры</span>
+                    </a>
+                </li>
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=consoles" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/console.svg' %}" alt="игровые приставки" class="categories_list-item-img">
+                        <span class="categories_list-item-span">Игровые приставки</span>
+                    </a>
+                </li>
+                <li class="categories_list-item">
+                    <a href="{% url 'catalog' %}?category=audio" class="categories_list-item-link">
+                        <img src="{% static 'main/icons/audio.svg' %}" alt="аудиотехника" class="categories_list-item-img">
+                        <span class="categories_list-item-span">Аудиотехника</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section>
+        <div class="container-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide_1">
+                        <div class="slider-text">
+                            <p class="slider-text__p slider-text_main">
+                                Игровые<br>приставки и<br>аксессуары
+                            </p>
+                            <p class="optional">
+                                По самым лучшим ценам в наличии!
+                            </p>
+                        </div>
+                        <div class="slider-image">
+                            <img src="{% static 'main/img/slide_1.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide_2">
+                        <div class="slider-text">
+                            <p class="slider-text__p slider-text_main">
+                                Ноутбуки для любых задач
+                            </p>
+                            <p class="optional">
+                                По самым лучшим ценам!
+                            </p>
+                        </div>
+                        <div class="slider-image">
+                            <img src="{% static 'main/img/slide_2.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide_3">
+                        <div class="slider-text">
+                            <p class="slider-text__p slider-text_main">
+                                Смартфоны<br>Google Pixel
+                            </p>
+                            <p class="optional">
+                                По самым лучшим ценам!
+                            </p>
+                        </div>
+                        <div class="slider-image slider-image_pixel">
+                            <img src="{% static 'main/img/slide_3.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="headline">Популярные бренды</h2>
+            <div class="marquee">
+                <ul class="marquee-content">
+                    <li><img src="{% static 'main/icons/apple.svg' %}" class="marquee-element" alt=""></li>
+                    <li><img src="{% static 'main/icons/xbox.svg' %}" class="marquee-element" alt=""></li>
+                    <li><img src="{% static 'main/icons/samsung.svg' %}" class="marquee-element samsung" alt=""></li>
+                    <li><img src="{% static 'main/icons/lg.svg' %}" class="marquee-element" alt=""></li>
+                    <li><img src="{% static 'main/icons/playstation.svg' %}" class="marquee-element" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <h2 class="headline">Каталог</h2>
+            <div class="catalog">
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/iphone_14_pro.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Apple IPhone 14 Pro 128Gb, темно-фиолетовый
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">95 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="1" data-sb-product-name="Apple IPhone 14 Pro 128Gb, темно-фиолетовый"
+                            data-sb-product-price="95990" data-sb-product-quantity="1" data-sb-product-img="./img/iphone_14_pro.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/pixel_table.webp' %}" alt=""/>
+                        </a>  
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Google Pixel Tablet 8/128, зеленый
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">54 990 ₽</div>
+                            <button class="card__add"
+                                data-sb-id-or-vendor-code="2"
+                                data-sb-product-name="Google Pixel Tablet 8/128, зеленый"
+                                data-sb-product-price="54990"
+                                data-sb-product-quantity="1"
+                                data-sb-product-img="./img/pixel_table.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/samsung_tv.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            50” Телевизор Samsung UE50AU7100U LED, HDR, 2021
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">32 990 ₽</div>
+                            <button class="card__add"
+                                data-sb-id-or-vendor-code="3"
+                                data-sb-product-name="50” Телевизор Samsung UE50AU7100U LED, HDR, 2021"
+                                data-sb-product-price="32990"
+                                data-sb-product-quantity="1"
+                                data-sb-product-img="./img/samsung_tv.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/yandex_speaker.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Умная колонка Яндекс.Станция Мини, черный
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">5 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="4"
+                                data-sb-product-name="Умная колонка Яндекс.Станция Мини, черный" data-sb-product-price="5990"
+                                data-sb-product-quantity="2" data-sb-product-img="./img/yandex_speaker.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/samsung_galaxy_s23.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Samsung Galaxy S23 Ultra 256 ГБ, черный
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">97 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="5"
+                                data-sb-product-name="Samsung Galaxy S23 Ultra 256 ГБ, черный" data-sb-product-price="97990"
+                                data-sb-product-quantity="1" data-sb-product-img="./img/samsung_galaxy_s23.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/msi_modern.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            15,6” Ноутбук MSI Modern 15 B12M-211RU, черный
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">41 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="6"
+                                data-sb-product-name="15,6” Ноутбук MSI Modern 15 B12M-211RU, черный" data-sb-product-price="41990"
+                                data-sb-product-quantity="1" data-sb-product-img="./img/msi_modern.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/playstation_5.png' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Игровая приставка Sony PlayStation 5 Digital Edition 825 ГБ
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">58 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="7"
+                                data-sb-product-name="Игровая приставка Sony PlayStation 5 Digital Edition 825 ГБ" data-sb-product-price="58990"
+                                data-sb-product-quantity="1" data-sb-product-img="./img/playstation_5.png">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card__top">
+                        <a href="{% url 'catalog' %}" class="card__image">
+                            <img src="{% static 'main/img/playstation_4.webp' %}" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="card__bottom">
+                        <a href="{% url 'catalog' %}" class="card__title">
+                            Игровая приставка Sony PlayStation 4 Slim 500 ГБ
+                        </a>
+                        <div class="product__quantity"></div>
+
+                        <div class="card__prices">
+                            <div class="card__price card__price--discount">34 990 ₽</div>
+                            <button class="card__add" data-sb-id-or-vendor-code="8"
+                                data-sb-product-name="Игровая приставка Sony PlayStation 5 Digital Edition 825 ГБ" data-sb-product-price="34990"
+                                data-sb-product-quantity="1" data-sb-product-img="./img/playstation_4.webp">
+                                <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="catalog__page">
+                <a href="{% url 'catalog' %}">
+                    <button class="catalog__page--btn">
+                        Перейти в каталог
+                    </button>
+                </a>
+            </div>
+            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg"
+                version="1.1">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                            result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                    </filter>
+                </defs>
+            </svg>
+
+        </div>
+    </section>
+
+
+
+    <section>
+        <div class="container">
+            <h2 class="headline advantages__title">Наши преимущества</h2>
+            <div class="advantages">
+                <div class="advantages__item">
+                    <img src="{% static 'main/icons/best_prices.svg' %}" alt="">
+                    <span class="advantages__name text_white">Лучшие цены</span>
+                </div>
+                <div class="advantages__item">
+                    <img src="{% static 'main/icons/fast_delivery.svg' %}" alt="">
+                    <span class="advantages__name text_white">Быстрая доставка</span>
+                </div>
+                <div class="advantages__item">
+                    <img src="{% static 'main/icons/quality_control.svg' %}" alt="">
+                    <span class="advantages__name text_white">Контроль качества</span>
+                </div>
+                <div class="advantages__item">
+                    <img src="{% static 'main/icons/wide_range.svg' %}" alt="">
+                    <span class="advantages__name text_white">Широкий ассортимент</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__left">
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a class="footer__link logo" href="{% url 'index' %}" title="на главную">
+                                <img class="logo__img logo__img-footer" src="{% static 'main/icons/logo.svg' %}" title="#"
+                                    alt="логотип">
+                            </a>
+
+                            <a class="footer__link logo-2" href="{% url 'index' %}" title="на главную">
+                                <img class="logo-2__img logo-2__img-footer" src="{% static 'main/icons/logo_2.svg' %}"
+                                    title="#" alt="логотип 2">
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'about_company' %}">О компании</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'contacts' %}">Контакты</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'catalog' %}">Каталог</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__right">
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <p class="footer__link_contacts text-white">Контакты</p>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link footer__link_last text-white" href="tel:89999999999">
+                                +7 (999) 999-99-99
+                            </a>
+                            <img class="line__contacts" src="{% static 'main/icons/line_contacts.svg' %}">
+                            <a class="footer__link footer__link_last text-white" href="tel:89999999999">
+                                cybermart@gmail.com
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white"
+                                href="https://yandex.ru/maps/192/vladimir/house/universitetskaya_ulitsa_4/YEkYdQFmTUAEQFtsfX1ydn5qYA==/?indoorLevel=1&ll=40.366453%2C56.137295&z=16.87">г.
+                                Владимир, ул. Университетская, д. 4, к. 321</a>
+                        </li>
+                        <ul class="social__links">
+                            <li class="social__item">
+                                <a class="social__contacts" href="#" title="телеграм">
+                                    <img class="social__img" src="{% static 'main/icons/telegram.svg' %}" title="#"
+                                        alt="телеграм">
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a class=" social__contacts" href="#" title="вконтакте">
+                                    <img class="social__img" src="{% static 'main/icons/vk.svg' %}" title="#"
+                                        alt="вконтакте">
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a class=" social__contacts" href="#" title="ютуб">
+                                    <img class="social__img" src="{% static 'main/icons/youtube.svg' %}" title="#"
+                                        alt="ютуб">
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'main/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'main/js/index.js' %}"></script>
+    <script src="{% static 'main/js/jquery-3.7.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'main/css/smartbasket.min.css' %}">
+    
+    
+    <div class="smart-basket__wrapper"></div>
+    
+    <script src="{% static 'main/js/smartbasket.min.js' %}"></script>
+    
+    <script>
+        $(function () {
+            $('.smart-basket__wrapper').smbasket({
+                productElement: 'card',
+                buttonAddToBasket: 'card__add',
+                productPrice: 'product__price-number',
+                productSize: 'product__size-element',
+
+                productQuantityWrapper: 'product__quantity',
+                smartBasketMinArea: 'basket',
+                countryCode: '+7',
+                smartBasketCurrency: '₽',
+                smartBasketMinIconPath: "{% static 'main/icons/basket.svg' %}",
+
+                agreement: {
+                    isRequired: true,
+                    isChecked: true,
+                },
+                nameIsRequired: false,
+            });
+        });
+    </script>
+</body>
+</html>

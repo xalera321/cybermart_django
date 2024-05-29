@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybermart</title>
+    <link rel="stylesheet" href="{% static 'main/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/smartbasket.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="icon" href="{% static 'main/icons/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="menu">
+                    <div class="menu__left">
+                        <nav class="menu__inner">
+                            <ul class="menu-list__left">
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'about_company' %}">О компании</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'contacts' %}">Контакты</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link text-white" href="{% url 'catalog' %}">Каталог</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="menu__right">
+                        <nav class="menu__inner">
+                            <ul class="menu-list__right">
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link number text-white">Звоните с 9:00 до
+                                        21:00</a>
+                                </li>
+                                <li class="menu-list__item">
+                                    <a class="menu-list__link menu-list__link_last text-white" href="tel:89999999999">
+                                        +7 (999) 999-99-99
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="navbar">
+                    <div class="header-bottom__inner">
+                        <a class="logo" href="{% url 'index' %}" title="на главную">
+                            <img class="logo__img" src="{% static 'main/icons/logo.svg' %}" title="#" alt="логотип">
+                        </a>
+
+                        <a class="logo-2" href="{% url 'index' %}" title="на главную">
+                            <img class="logo-2__img" src="{% static 'main/icons/logo_2.svg' %}" title="#" alt="логотип 2">
+                        </a>
+
+                    </div>
+                    <div class="search">
+                        <input type="text" id="search__bar" placeholder="Поиск товаров">
+                        <button type="submit" id="search__button">
+                            <img src="{% static 'main/icons/search.svg' %}" alt="поиск">
+                        </button>
+                    </div>
+                    <ul class="basket">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="section__catalog">
+    <div class="container">
+        <header class="section__header">
+            <h2 class="headline">Каталог</h2>
+            <nav class="catalog__nav">
+                <ul class="catalog__nav-wrapper">
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn is-active" type="button" data-filter="all">
+                            Все
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="smartphones">
+                            Смартфоны
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="tablets">
+                            Планшеты
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="laptops">
+                            Ноутбуки
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="televisions">
+                            Телевизоры
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="consoles">
+                            Игровые приставки
+                        </button>
+                    </li>
+                    <li class="catalog__nav-item">
+                        <button class="catalog__nav-btn" type="button" data-filter="audio">
+                            Аудиотехника
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="catalog">
+            {% for product in products %}
+            <div class="card" data-category="{{ product.category }}">
+                <div class="card__top">
+                    {% if product.image %}
+                    <img class="card__image" src="{{ product.image.url }}" alt="{{ product.name }}"/>
+                    {% else %}
+                    <img src="{% static 'main/icons/logo_2.svg' %}" alt="No Image"/>
+                    {% endif %}
+                </div>
+
+                <div class="card__bottom">
+                    <div class="card__info">
+                        <h3 class="card__title">{{ product.name }}</h3>
+                        <p class="card__description">{{ product.description }}</p>
+                    </div>
+                    <div class="product__quantity">{{ product.quantity }}</div>
+                    <div class="card__prices">
+                        {% if product.discount_price %}
+                        <div class="card__price card__price--discount">{{ product.discount_price }} ₽</div>
+                        {% else %}
+                        <div class="card__price">{{ product.price }} ₽</div>
+                        {% endif %}
+                        <button class="card__add" data-sb-id-or-vendor-code="{{ product.id }}"
+                            data-sb-product-name="{{ product.name }}" data-sb-product-price="{{ product.discount_price|default:product.price }}">
+                            <img src="{% static 'main/icons/basket.svg' %}" class="card__add--img">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__left">
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a class="footer__link logo" href="{% url 'index' %}" title="на главную">
+                                <img class="logo__img logo__img-footer" src="{% static 'main/icons/logo.svg' %}" title="#"
+                                    alt="логотип">
+                            </a>
+    
+                            <a class="footer__link logo-2" href="{% url 'index' %}" title="на главную">
+                                <img class="logo-2__img logo-2__img-footer" src="{% static 'main/icons/logo_2.svg' %}"
+                                    title="#" alt="логотип 2">
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'about_company' %}">О компании</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'contacts' %}">Контакты</a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white" href="{% url 'catalog' %}">Каталог</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__right">
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <p class="footer__link_contacts text-white">Контакты</p>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link footer__link_last text-white" href="tel:89999999999">
+                                +7 (999) 999-99-99
+                            </a>
+                            <img class="line__contacts" src="{% static 'main/icons/line_contacts.svg' %}">
+                            <a class="footer__link footer__link_last text-white" href="tel:89999999999">
+                                cybermart@gmail.com
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a class="footer__link text-white"
+                                href="https://yandex.ru/maps/192/vladimir/house/universitetskaya_ulitsa_4/YEkYdQFmTUAEQFtsfX1ydn5qYA==/?indoorLevel=1&ll=40.366453%2C56.137295&z=16.87">г.
+                                Владимир, ул. Университетская, д. 4, к. 321</a>
+                        </li>
+                        <ul class="social__links">
+                            <li class="social__item">
+                                <a class="social__contacts" href="#" title="телеграм">
+                                    <img class="social__img" src="{% static 'main/icons/telegram.svg' %}" title="#"
+                                        alt="телеграм">
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a class=" social__contacts" href="#" title="вконтакте">
+                                    <img class="social__img" src="{% static 'main/icons/vk.svg' %}" title="#"
+                                        alt="вконтакте">
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a class=" social__contacts" href="#" title="ютуб">
+                                    <img class="social__img" src="{% static 'main/icons/youtube.svg' %}" title="#"
+                                        alt="ютуб">
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{% static 'main/js/myLib.js' %}"></script>
+    <script src="{% static 'main/js/catalog.js' %}"></script>
+    <script src="{% static 'main/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'main/js/index.js' %}"></script>
+    <script src="{% static 'main/js/jquery-3.7.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'main/css/smartbasket.min.css' %}">
+    
+    
+    <div class="smart-basket__wrapper"></div>
+    
+    <script src="{% static 'main/js/smartbasket.min.js' %}"></script>
+    
+    <script>
+        $(function () {
+            $('.smart-basket__wrapper').smbasket({
+                productElement: 'card',
+                buttonAddToBasket: 'card__add',
+                productPrice: 'product__price-number',
+                productSize: 'product__size-element',
+
+                productQuantityWrapper: 'product__quantity',
+                smartBasketMinArea: 'basket',
+                countryCode: '+7',
+                smartBasketCurrency: '₽',
+                smartBasketMinIconPath: "{% static 'main/icons/basket.svg' %}",
+
+                agreement: {
+                    isRequired: true,
+                    isChecked: true,
+                },
+                nameIsRequired: false,
+            });
+        });
+    </script>
+
+</body>
+</html>
